@@ -25,6 +25,8 @@ Constraints:
 nums contains distinct values sorted in ascending order.
 -104 <= target <= 104*/
 
+//O(n)
+
 var searchInsert = function (nums, target) {
 
   for (let i = 0; i < nums.length; i++) {
@@ -44,6 +46,29 @@ var searchInsert = function (nums, target) {
       return 0
     }
 
+  }
+
+};
+
+/*Binary Search*/ // O(log n)
+var searchInsert = function (nums, target) {
+
+  let l = 0
+  let r = nums.length - 1
+
+  while (l < r) {
+
+    let mid = Math.floor((l + r) / 2)
+
+    if (target === nums[mid]) {
+      return mid
+    }
+
+    nums[mid] > target ? r = mid : l = mid + 1
+  }
+
+  if (l === r) {
+    return target <= nums[l] ? l : l + 1
   }
 
 };
